@@ -13,10 +13,23 @@
         double roundedHeight;
 
 
+
         Console.WriteLine("Welcome to Your Personal Information System!\r\n");
 
         Console.Write("Please enter your name: ");
         name = Console.ReadLine()!;
+
+        //if name contains 0-9 digit returns true
+        while (ValidateString(name))
+        {
+            Console.Write("" +
+                "Invalid input. Name must not contain numbers.\n" +
+                "Please enter your name: ");
+            name = Console.ReadLine()!;
+        }
+
+
+
 
         //It prompts the user to enter their age and reads the input from
         //the standard input stream using the Console.ReadLine() method.
@@ -88,5 +101,16 @@
         {
             Console.WriteLine("Sorry, you are underage for drinking.\n");
         }
+    }
+
+    static bool ValidateString(string s)
+    {
+        const string NUMS = "0123456789";
+
+        foreach (var num in NUMS.ToArray())
+        {
+            if (s.Contains(num)) return true;
+        }
+        return false;
     }
 }
